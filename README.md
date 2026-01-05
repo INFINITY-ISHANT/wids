@@ -66,3 +66,24 @@ This notebook implements two sentiment analysis pipelines: a classical approach 
      - Evaluation:
          - Calculated Accuracy and F1-Score on the test set.
          - Saved the fine-tuned model and demonstrated
+      
+  3. Explainable Ai
+      - Dataset: CIFAR-10 (10 classes).
+      - Preprocessing:
+          - Resized images to 224x224 to match ResNet's expected input.
+          - Data augmentation (Random Horizontal Flip, Random Rotation).
+          - Normalization using ImageNet statistics.
+      - Model Architecture:
+          - Loaded a pre-trained ResNet-18 (IMAGENET1K_V1 weights).
+          - Fine-tuning Strategy: Froze all layers initially, then unfroze layer4 and the final fully connected layer (fc). Replaced the fc layer to output 10 classes.
+      - Training:
+          - Optimizer: Adam (lr=0.001).
+          - Loss Function: CrossEntropyLoss.
+          - Scheduler: StepLR (step_size=5, gamma=0.1).
+          - Epochs: 10.
+      - Explainability techniques used:
+          - Convolutional Filter Visualization
+          - Feature Map (Activation) Visualization
+          - Misclassification Analysis
+          - Grad-CAM      
+        
