@@ -1,6 +1,4 @@
 ### Assignment 1 summary
-Note: Due to file size limit of github i have uploaded the project zip at this link-https://drive.google.com/file/d/1KDEF7OKPJG9VXFYJQg0RojvQ0kPqlVRz/view?usp=drive_link 
-
 This notebook implements two different image classification tasks using PyTorch: Transfer Learning on CIFAR-10 and a Custom MLP on MNIST.
 1. Transfer Learning with DenseNet121 on CIFAR-10
      - Dataset: CIFAR-10 (10 classes of colored images).
@@ -90,7 +88,9 @@ This notebook implements two sentiment analysis pipelines: a classical approach 
           - Misclassification Analysis
           - Grad-CAM      
         
-### Final Project summary
+# Final Project summary
+Note: Due to file size limit of github i have uploaded the project zip at this link-https://drive.google.com/file/d/1KDEF7OKPJG9VXFYJQg0RojvQ0kPqlVRz/view?usp=drive_link 
+
 This project implements an end-to-end deep learning model capable of generating descriptive captions for images. It utilizes a ResNet-18 backbone for visual feature extraction and a Transformer Decoder for text generation, trained on the Flickr8k dataset.
 1. Dataset (Flickr8k)
    - Contains 8,000 images, each with 5 different captions.
