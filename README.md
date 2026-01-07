@@ -1,5 +1,6 @@
 ### Assignment 1 summary
-Note: Due to file size limit of github i have uploaded the project zip at this link-https://drive.google.com/file/d/1KDEF7OKPJG9VXFYJQg0RojvQ0kPqlVRz/view?usp=drive_link
+Note: Due to file size limit of github i have uploaded the project zip at this link-https://drive.google.com/file/d/1KDEF7OKPJG9VXFYJQg0RojvQ0kPqlVRz/view?usp=drive_link 
+
 This notebook implements two different image classification tasks using PyTorch: Transfer Learning on CIFAR-10 and a Custom MLP on MNIST.
 1. Transfer Learning with DenseNet121 on CIFAR-10
      - Dataset: CIFAR-10 (10 classes of colored images).
