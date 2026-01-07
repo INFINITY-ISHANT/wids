@@ -88,3 +88,41 @@ This notebook implements two sentiment analysis pipelines: a classical approach 
           - Misclassification Analysis
           - Grad-CAM      
         
+### Final Project summary
+This project implements an end-to-end deep learning model capable of generating descriptive captions for images. It utilizes a ResNet-18 backbone for visual feature extraction and a Transformer Decoder for text generation, trained on the Flickr8k dataset.
+1. Dataset (Flickr8k)
+   - Contains 8,000 images, each with 5 different captions.
+   - Preprocessing: Images were resized to 224x224 and normalized using ImageNet standards.
+   - Splits: Data was separated into Training (6,000), Validation (1,000), and Test (1,000) sets.
+   - Vocabulary: Built a vocabulary of ~3,000 words (frequency threshold = 1) including special tokens (<bos>, <eos>, <pad>, <unk>).
+2. Model Architecture
+   - Encoder (CNN)
+      - Backbone: ResNet-18 (Pretrained on ImageNet).
+      - Function: Extracts high-level visual features from input images.
+      - Optimization Strategies:
+         - Feature Caching: Pre-computed properties for faster initial training.
+         - Fine-Tuning: Unfrozen the last convolutional block to learn task-specific features during the end-to-end training phase.
+   - Decoder(Transformer)
+      - Architecture: PyTorch nn.TransformerDecoder.
+      - Configuration: 4 decoder layers, 8 attention heads, 512 embedding dimension (d_model).
+      - Mechanism: Uses Self-Attention to process text and Cross-Attention to attend to image features extracted by the CNN.
+      - Input: Positional encodings + Word embeddings.
+ 3. Implementation details
+   - Data Processing: Tokenization, vocabulary building, and custom PyTorch Dataset creation.
+   - Feature Caching: Implemented a mode to pre-calculate and save CNN features to .pt files to speed up decoder prototyping.
+   - End-to-End Training: Built a full pipeline where images are loaded directly, allowing gradients to flow back into the CNN.
+   - Differential Learning Rates: Used a lower learning rate (1e-5) for the pre-trained CNN and a higher learning rate (2e-4) for the Transformer Decoder to preserve visual knowledge while learning syntax.
+   - Training Configurations:
+      - Optimizer: Adam
+      - Loss Function: Cross Entropy Loss (ignoring padding)
+      - Scheduler: StepLR (learning rate decay)
+      - Epochs: 20
+      - Regularization: Dropout (0.1) and Weight Decay.
+ 4. Evaluation & Results: The model was evaluated using standard captioning metrics and qualitative analysis
+   - Metrics:
+      - BLEU-1 to BLEU-4: Measured n-gram overlap with ground truth.
+      - METEOR: Evaluated alignment between hypothesis and reference.
+      - Repetition Rate: Analyzed degenerate repetition to ensure diverse generation.
+ 5. Explainability: Implemented Grad-CAM (Gradient-weighted Class Activation Mapping) to visualize which parts of the image the model focused on when generating captions (specifically targeting the End-of-Sentence token).
+   - Success Cases: Model focuses on relevant primary subjects (e.g., dogs, people).
+   - Failure Analysis: Visualized cases where the model looked at background noise or misclassified objects due to domain shift or occlusion.    
