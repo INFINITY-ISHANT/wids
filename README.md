@@ -66,8 +66,9 @@ This notebook implements two sentiment analysis pipelines: a classical approach 
      - Evaluation:
          - Calculated Accuracy and F1-Score on the test set.
          - Saved the fine-tuned model and demonstrated
-      
-  3. Explainable Ai
+
+### Assignment 3 summary
+1. Explainable ai
       - Dataset: CIFAR-10 (10 classes).
       - Preprocessing:
           - Resized images to 224x224 to match ResNet's expected input.
